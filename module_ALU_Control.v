@@ -3,6 +3,7 @@ module ALUcontrol(          // IR是当前指令寄存器中的指令
     input  [2:0] ALUOp,     // ALUOp是状态机中译码之后的ALUOp
     input  [5:0] Opcode,    // Opcode是IR[31：26]
     output [2:0] ALUcontrol // 输出ALU的控制信号
+                            // 其中，Opcode字段目前没有什么用处，在后续修改中需要使用
 );
     // Opcode: IR[31:26]
     parameter [5:0] ADDIU   = 6'b001001,
