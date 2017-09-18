@@ -25,27 +25,30 @@ module ALUcontrol(          // IR是当前指令寄存器中的指令
                     OR   = 6'b100101,
                     SLT  = 6'b101010;
     
-    reg [2:0] aluop;
+    reg [2:0] aluop，ALU_op;
     reg [5:0] func,opcode;
+    
+    assign ALUcontrol = ALU_op; // 将ALU_op接到输出接口上
+    
     always @(Func or ALUOp or Opcode) begin
        aluop  = ALUOp;
        func   = Func;
        opcode = Opcode;
     end
     
-    always @(ALUOp or func or opcode) begin
-        if(ALUOp == 3'b100)      ALUcontrol =  3'b111;
-        else if(ALUOp == 3'b101) ALUcontrol =  3'b100;
-        else if(ALUOp == 3'b011) ALUcontrol =  3'b011;
-        else if(ALUOp == 3'b000) ALUcontrol =  3'b000;
-        else if(ALUOp == 3'b001) ALUcontrol =  3'b110;
-        else if(ALUOp == 3'b010) begin
+    always @(aluop or func or opcode) begin
+        if(aluop == 3'b100)      ALU_op =  3'b111;
+        else if(aluop == 3'b101) ALU_op =  3'b100;
+        else if(aluop == 3'b011) ALU_op =  3'b011;
+        else if(aluop == 3'b000) ALU_op =  3'b000;
+        else if(aluop == 3'b001) ALU_op =  3'b110;
+        else if(aluop == 3'b010) begin
             case(Func)
-                OR:      ALUcontrol = 3'b010;
-                SLT:     ALUcontrol = 3'b111;
-                default: ALUcontrol = 3'b010;
+                OR:      ALU_op = 3'b010;
+                SLT:     ALU_op = 3'b111;
+                default: ALU_op = 3'b010;
             endcase
         end
-        else ALUcontrol = 3'b000;
+        else ALU_op = 3'b000;
     end
 endmodule
