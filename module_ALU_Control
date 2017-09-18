@@ -3,7 +3,7 @@ module ALUcontrol(
     input  [2:0] ALUOp,
     input  [5:0] Opcode,
     output [2:0] ALUop
-    );
+);
     // Opcode: IR[31:26]
     parameter [5:0] ADDIU   = 6'b001001,
                     LW      = 6'b100011,
