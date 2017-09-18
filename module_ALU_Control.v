@@ -44,11 +44,11 @@ module ALUcontrol(          // IR是当前指令寄存器中的指令
         else if(aluop == 3'b001) ALU_op =  3'b110;
         else if(aluop == 3'b010) begin
             case(Func)
-                OR:      ALU_op = 3'b010;
+                OR:      ALU_op = 3'b001;
                 SLT:     ALU_op = 3'b111;
                 default: ALU_op = 3'b010;
             endcase
         end
-        else ALU_op = 3'b000;
+        else ALU_op = 3'b010;
     end
 endmodule
