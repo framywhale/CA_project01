@@ -1,8 +1,8 @@
-module ALUcontrol(
-    input  [5:0] Func,
-    input  [2:0] ALUOp,
-    input  [5:0] Opcode,
-    output [2:0] ALUcontrol
+module ALUcontrol(          // IR是当前指令寄存器中的指令
+    input  [5:0] Func,      // Func是IR[5：0],为fucn字段
+    input  [2:0] ALUOp,     // ALUOp是状态机中译码之后的ALUOp
+    input  [5:0] Opcode,    // Opcode是IR[31：26]
+    output [2:0] ALUcontrol // 输出ALU的控制信号
 );
     // Opcode: IR[31:26]
     parameter [5:0] ADDIU   = 6'b001001,
