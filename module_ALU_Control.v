@@ -34,7 +34,7 @@ module ALUcontrol(          // IR是当前指令寄存器中的指令
     end
     
     always @(ALUOp or func or opcode) begin
-        if(ALUOp == 3'b100)  ALUcontrol = 3'b111;
+        if(ALUOp == 3'b100)      ALUcontrol =  3'b111;
         else if(ALUOp == 3'b101) ALUcontrol =  3'b100;
         else if(ALUOp == 3'b011) ALUcontrol =  3'b011;
         else if(ALUOp == 3'b000) ALUcontrol =  3'b000;
